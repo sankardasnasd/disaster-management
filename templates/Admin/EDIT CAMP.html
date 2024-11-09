@@ -1,0 +1,161 @@
+{##}
+{#{% extends 'admin/adminindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"#}
+{#        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>#}
+{#    <title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="/admin_edit_camp_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#    {% csrf_token %}#}
+{#    <table width="200" border="1">#}
+{#        <tr>#}
+{#            <td colspan="2">#}
+{#                <img src="{{ camp.image.url }}" alt="" style="width: 80px; height: 80px;"/></td>#}
+{#            <td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>NAME</td>#}
+{#            <td><input type="text" name="name" value="{{ camp.name }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>PLACE</td>#}
+{#            <td><input type="text" name="textfield2" value="{{ camp.place }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>POST</td>#}
+{#            <td><input type="text" name="textfield3" value="{{ camp.post }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>LANDMARK</td>#}
+{#            <td><input type="text" name="textfield4" value="{{ camp.landmark }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>CAPACITY</td>#}
+{#            <td><input type="text" name="textfield5" value="{{ camp.capacity }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>DETAILS</td>#}
+{#            <td><input type="text" name="textfield6" value="{{ camp.details }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>LATTITUDE</td>#}
+{#            <td><input type="text" name="textfield7" value="{{ camp.lattitude }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>LONGITUDE</td>#}
+{#            <td><input type="text" name="textfield8" value="{{ camp.longitude }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>IMAGE</td>#}
+{#            <td><input type="file" name="file"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td colspan="2">#}
+{#                <div align="center">#}
+{#                    <input type="submit" name="Submit" value="Submit"/>#}
+{#                </div>#}
+{#            </td>#}
+{#        </tr>#}
+{#    </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Camp Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5>Edit Camp Information</h5>
+        </div>
+        <div class="card-body">
+            <form action="/admin_edit_camp_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+                {% csrf_token %}
+                <div class="mb-3 text-center">
+                    <img src="{{ camp.image.url }}" alt="Camp Image" style="width: 80px; height: 80px;" class="img-thumbnail"/>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ camp.name }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="place" class="form-label">Place</label>
+                        <input type="text" class="form-control" name="textfield2" value="{{ camp.place }}" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="post" class="form-label">Post</label>
+                        <input type="text" class="form-control" name="textfield3" value="{{ camp.post }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="landmark" class="form-label">Landmark</label>
+                        <input type="text" class="form-control" name="textfield4" value="{{ camp.landmark }}" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="capacity" class="form-label">Capacity</label>
+                        <input type="text" class="form-control" name="textfield5" value="{{ camp.capacity }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="details" class="form-label">Details</label>
+                        <input type="text" class="form-control" name="textfield6" value="{{ camp.details }}" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="latitude" class="form-label">Latitude</label>
+                        <input type="text" class="form-control" name="textfield7" value="{{ camp.lattitude }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="longitude" class="form-label">Longitude</label>
+                        <input type="text" class="form-control" name="textfield8" value="{{ camp.longitude }}" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label for="image" class="form-label">Upload New Image</label>
+                        <input type="file" class="form-control" name="file">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-12 text-center">
+                        <input type="submit" name="Submit" value="Submit" class="btn btn-success">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

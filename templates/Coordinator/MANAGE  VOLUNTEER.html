@@ -1,0 +1,134 @@
+{##}
+{#{% extends 'Coordinator/cindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="" enctype="multipart/form-data">#}
+{#  <table width="915" border="1">#}
+{#    <tr>#}
+{#      <th colspan="11" scope="col">NAME#}
+{#        <label>#}
+{#        <input type="text" name="textfield" />#}
+{#        <input type="submit" name="Submit" value="SEARCH" />#}
+{#      </label></th>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <th width="99" scope="col">NAME</th>#}
+{#      <th width="86" scope="col">IMAGE</th>#}
+{#      <th width="118" scope="col">DATE OF BIRTH </th>#}
+{#      <th width="118" scope="col">GENDER</th>#}
+{#      <th width="118" scope="col">PLACE</th>#}
+{#      <th width="118" scope="col">POST</th>#}
+{#      <th width="118" scope="col">PIN</th>#}
+{#      <th width="118" scope="col">PHONE NUMBER </th>#}
+{#      <th width="112" scope="col">EMAIL</th>#}
+{#      <th width="112" scope="col">edit/delete</th>#}
+{##}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td height="64">{{ i.name }}&nbsp;</td>#}
+{#        <td>#}
+{#      <img src="/media/{{ i.image }}" alt="" style="width: 30px; height: 30px;"/></td>#}
+{#      <td>{{ i.dob }}&nbsp;</td>#}
+{#      <td>{{ i.gender }}&nbsp;</td>#}
+{#      <td>&nbsp;{{ i.place }}</td>#}
+{#      <td>&nbsp;{{ i.post }}</td>#}
+{#      <td>&nbsp;{{ i.pin }}</td>#}
+{#      <td>{{ i.phone }}&nbsp;</td>#}
+{#      <td>{{ i.email }}&nbsp;</td>#}
+{#	  <td><p><a href="/coor_delete_volu/{{ i.id }}">delete</a></p>#}
+{#      <p><a href="/edit_volunteer/{{ i.id }}">edit</a></p></td>#}
+{#    </tr>#}
+{#     {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="10"><label>#}
+{#      <div align="center"><a href="/coordinator_add_volunteer">ADD </a></div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+
+
+
+{% extends 'Coordinator/cindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Management</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Volunteer Management</h2>
+
+{# <form id="form1" name="form1" method="post" action="" enctype="multipart/form-data" class="mb-4">#}
+{#    <div class="input-group mb-3">#}
+{#      <input type="text" name="textfield" class="form-control" placeholder="Search by name" aria-label="Search by name">#}
+{#      <div class="input-group-append">#}
+{#        <button class="btn btn-primary" type="submit" name="Submit">SEARCH</button>#}
+{#      </div>#}
+{#    </div>#}
+{#  </form> #}
+
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">NAME</th>
+        <th scope="col">IMAGE</th>
+        <th scope="col">DATE OF BIRTH</th>
+        <th scope="col">GENDER</th>
+        <th scope="col">PLACE</th>
+        <th scope="col">POST</th>
+        <th scope="col">PIN</th>
+        <th scope="col">PHONE NUMBER</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in val %}
+      <tr>
+        <td>{{ i.name }}</td>
+        <td><img src="/media/{{ i.image }}" alt="Image" style="width: 40px; height: 40px;" class="rounded"></td>
+        <td>{{ i.dob }}</td>
+        <td>{{ i.gender }}</td>
+        <td>{{ i.place }}</td>
+        <td>{{ i.post }}</td>
+        <td>{{ i.pin }}</td>
+        <td>{{ i.phone }}</td>
+        <td>{{ i.email }}</td>
+        <td>
+          <a href="/edit_volunteer/{{ i.id }}" class="btn btn-sm btn-warning">Edit</a>
+          <a href="/coor_delete_volu/{{ i.id }}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="text-center mt-4">
+    <a href="/coordinator_add_volunteer" class="btn btn-success">ADD VOLUNTEER</a>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

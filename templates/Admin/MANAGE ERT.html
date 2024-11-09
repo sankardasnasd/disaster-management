@@ -1,0 +1,92 @@
+{##}
+{#{% extends 'admin/adminindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="558" border="1">#}
+{#    <tr>#}
+{#      <td width="46">NAME</td>#}
+{#      <td width="49">PLACE</td>#}
+{#      <td width="39">POST</td>#}
+{#      <td width="134">PHONE NUMBER </td>#}
+{#      <td width="117">EXPERIENCE</td>#}
+{#      <td width="77">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.name }}</td>#}
+{#      <td>&nbsp;{{ i.place }}</td>#}
+{#      <td>&nbsp;{{ i.post }}</td>#}
+{#      <td>&nbsp;{{ i.phone }}</td>#}
+{#      <td>&nbsp;{{ i.experience }}</td>#}
+{#      <td><p><a href="/admin_accept_ert/{{ i.LOGIN.id }}">ACCEPT</a></p>#}
+{#      <p><a href="/admin_reject_ert/{{ i.LOGIN.id }}">REJECT</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User View</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5>ERT Details</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Place</th>
+                        <th>Post</th>
+                        <th>Phone Number</th>
+                        <th>Experience</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in val %}
+                    <tr>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.place }}</td>
+                        <td>{{ i.post }}</td>
+                        <td>{{ i.phone }}</td>
+                        <td>{{ i.experience }}</td>
+                        <td>
+                            <a href="/admin_accept_ert/{{ i.LOGIN.id }}" class="btn btn-success btn-sm">Accept</a>
+                            <a href="/admin_reject_ert/{{ i.LOGIN.id }}" class="btn btn-danger btn-sm">Reject</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

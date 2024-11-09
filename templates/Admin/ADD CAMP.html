@@ -1,0 +1,143 @@
+{##}
+{#{% extends 'admin/adminindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="admin_add_camp_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#    {% csrf_token %}#}
+{#  <table class="table table-bordered">#}
+{#    <tr>#}
+{#      <td>NAME</td>#}
+{#      <td><input type="text" name="name"required /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PLACE</td>#}
+{#      <td><input type="text" name="textfield2" required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>POST</td>#}
+{#      <td><input type="text" name="textfield3" required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>LANDMARK</td>#}
+{#      <td><input type="text" name="textfield4" required /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>CAPACITY</td>#}
+{#      <td><input type="text" name="textfield5" required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>DETAILS</td>#}
+{#      <td><input type="text" name="textfield6"required /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>LATTITUDE</td>#}
+{#      <td><input type="text" name="textfield7"required /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>LONGITUDE</td>#}
+{#      <td><input type="text" name="textfield8"required /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>IMAGE</td>#}
+{#      <td><input type="file" name="file" required/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input type="submit" name="Submit" value="Submit" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Camp</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Add Camp Details</h2>
+  <form action="admin_add_camp_post" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" pattern="[a-z A-Z]+" id="name" name="name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="place">Place</label>
+        <input type="text" class="form-control" pattern="[a-z A-Z]+" id="place" name="textfield2" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="post">Post</label>
+        <input type="text" class="form-control" pattern="[a-z A-Z]+" id="post" name="textfield3" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="landmark">Landmark</label>
+        <input type="text" class="form-control"  id="landmark" name="textfield4" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="capacity">Capacity</label>
+        <input type="number" class="form-control" id="capacity" name="textfield5" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="details">Details</label>
+        <input type="text" class="form-control" id="details" name="textfield6" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="latitude">Latitude</label>
+          <input type="text" class="form-control" id="latitude" name="textfield7" required
+       pattern="^-?([1-8]?[0-9](\.\d+)?|90(\.0+)?)$"
+       title="Please enter a valid latitude between -90 and 90.">
+
+{#        <input type="text" class="form-control" id="latitude" name="textfield7" required>#}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="longitude">Longitude</label>
+          <input type="text" class="form-control" id="longitude" name="textfield8" required
+       pattern="^-?((1[0-7][0-9]|[1-9]?[0-9])(\.\d+)?|180(\.0+)?)$"
+       title="Please enter a valid longitude between -180 and 180.">
+
+{#        <input type="text" class="form-control" id="longitude" name="textfield8" required>#}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="image">Image</label>
+        <input type="file" class="form-control-file" id="image" name="file" required>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,174 @@
+{##}
+{#{% extends 'Coordinator/cindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/coordinator_add_volunteer_post"  enctype="multipart/form-data">#}
+{#  <table width="443" border="1">#}
+{#    <tr>#}
+{#      <td width="137">NAME</td>#}
+{#      <td width="290"><input type="text" name="textfield" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>IMAGE</td>#}
+{#      <td><input type="file" name="file" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>DATE OF BIRTH </td>#}
+{#      <td><input type="date" name="textfield3" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>GENDER</td>#}
+{#      <td><input name="radiobutton" type="radio" value="m" />#}
+{#      MALE #}
+{#        <input name="radiobutton" type="radio" value="l" />#}
+{#      FEMALE</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PLACE</td>#}
+{#      <td><input type="text" name="textfield4" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>POST </td>#}
+{#      <td><input type="text" name="textfield5" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PIN</td>#}
+{#      <td><input type="text" name="textfield6" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PHONE NUMBER </td>#}
+{#      <td><input type="text" name="textfield7" /></td>#}
+{#    </tr>#}
+{#    #}
+{#    <tr>#}
+{#      <td>EMAIL</td>#}
+{#      <td><input type="text" name="textfield8" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>USERNAME</td>#}
+{#      <td><input type="text" name="textfield82" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PASSWORD</td>#}
+{#      <td><input type="text" name="textfield83" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>&nbsp;</td>#}
+{#      <td><input type="submit" name="Submit" value="Submit" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'Coordinator/cindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Volunteer</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Add Volunteer</h2>
+
+  <form id="form1" name="form1" method="post" action="/coordinator_add_volunteer_post" enctype="multipart/form-data">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" pattern="[a-z A-Z]+" id="name" name="textfield" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="image">Image</label>
+        <input type="file" class="form-control-file" id="image" name="file" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="textfield3" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Gender</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radiobutton" id="male" value="m" required>
+          <label class="form-check-label" for="male">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radiobutton" id="female" value="f">
+          <label class="form-check-label" for="female">Female</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="place">Place</label>
+        <input type="text" class="form-control" pattern="[a-z A-Z]+" id="place" name="textfield4" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="post">Post</label>
+        <input type="text" class="form-control" pattern="[a-z A-Z]+" id="post" name="textfield5" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="pin">PIN</label>
+        <input type="text" class="form-control" pattern="[0-9]{6}" id="pin" name="textfield6" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control"  id="phone" name="textfield7" required pattern="[6789][0-9]{9}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="textfield8" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="textfield82" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="password">Password</label>
+        <input type="password" class="form-control"  id="password" name="textfield83" required minlength="8">
+      </div>
+
+      <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

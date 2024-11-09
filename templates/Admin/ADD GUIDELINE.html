@@ -1,0 +1,94 @@
+{##}
+{#{% extends 'admin/adminindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/admin_add_guideline_post" enctype="multipart/form-data">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>GUIDELINE</td>#}
+{#      <td><input type="file" name="file1" /></td>#}
+{#    </tr>#}
+{#     <tr>#}
+{#      <td>COORDINATOR</td>#}
+{#      <td><select name="coordinator">#}
+{#           {% for i in value %}#}
+{#          <option value="{{ i.id }}">{{ i.name }}</option>#}
+{#          {% endfor %}#}
+{#      </select></td>#}
+{#     </tr>#}
+{#     <tr>#}
+{#      <td>DETAILS</td>#}
+{#      <td><input type="text" name="text" ></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>&nbsp;</td>#}
+{#      <td><input type="submit" name="Submit" value="ADD" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Add Guideline</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <form id="form1" name="form1" method="post" action="/admin_add_guideline_post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5>Add Guideline</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <label for="file1" class="col-sm-3 col-form-label">Guideline</label>
+                    <div class="col-sm-9">
+                        <input type="file" class="form-control" id="file1" name="file1" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="coordinator" class="col-sm-3 col-form-label">Coordinator</label>
+                    <div class="col-sm-9">
+                        <select class="form-select" id="coordinator" name="coordinator" required>
+                            {% for i in value %}
+                                <option value="{{ i.id }}">{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="details" class="col-sm-3 col-form-label">Details</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="details" name="text" placeholder="Enter details" required>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-success">Add Guideline</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

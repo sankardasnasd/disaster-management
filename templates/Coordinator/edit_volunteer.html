@@ -1,0 +1,156 @@
+{#{% extends 'Coordinator/cindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/edit_volunteer_post"  enctype="multipart/form-data">#}
+{#  <table width="443" border="1">#}
+{#    <tr>#}
+{#      <td width="137">NAME</td>#}
+{#      <td width="290"><input type="text" name="textfield" value="{{ val.name }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>IMAGE</td>#}
+{#      <td><img src="" alt=""/><input type="file" name="file"  /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>DATE OF BIRTH </td>#}
+{#      <td><input type="date" name="textfield3" value="{{ val.dob }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>GENDER</td>#}
+{#      <td><input name="radiobutton" type="radio" value="m" {% if val.gender == "m" %} checked {% endif %}/>#}
+{#      MALE#}
+{#        <input name="radiobutton" type="radio" value="l" {% if val.gender == "l" %} checked {% endif %} />#}
+{#      FEMALE</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PLACE</td>#}
+{#      <td><input type="text" name="textfield4"  value="{{ val.place }}"/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>POST </td>#}
+{#      <td><input type="text" name="textfield5" value="{{ val.post }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PIN</td>#}
+{#      <td><input type="text" name="textfield6" value="{{ val.pin }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>PHONE NUMBER </td>#}
+{#      <td><input type="text" name="textfield7"  value="{{ val.phone }}"/></td>#}
+{#    </tr>#}
+{##}
+{#    <tr>#}
+{#      <td>EMAIL</td>#}
+{#      <td><input type="text" name="textfield8" value="{{ val.email }}" /></td>#}
+{#    </tr>#}
+{##}
+{#    <tr>#}
+{#      <td>&nbsp;</td>#}
+{#      <td><input type="submit" name="Submit" value="Submit" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+
+
+{% extends 'Coordinator/cindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Volunteer</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Edit Volunteer</h2>
+
+  <form id="form1" name="form1" method="post" action="/edit_volunteer_post" enctype="multipart/form-data">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="textfield" value="{{ val.name }}" pattern="[a-z A-Z]+" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="image">Image</label><br>
+        <img src="{{ val.image.url }}" alt="Current Image" class="img-thumbnail mb-2" style="max-width: 100px;">
+        <input type="file" class="form-control-file" id="image" name="file">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="textfield3" value="{{ val.dob }}" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Gender</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" {% if val.gender == 'male' %} checked {% else %}{% endif %} name="radiobutton" id="male" value="m" {% if val.gender == "m" %} checked {% endif %}>
+          <label class="form-check-label" for="male">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radiobutton" {% if val.gender == 'female' %} checked {% else %}{% endif %} id="female" value="l" {% if val.gender == "l" %} checked {% endif %}>
+          <label class="form-check-label" for="female">Female</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="place">Place</label>
+        <input type="text" class="form-control" id="place" pattern="[a-z A-Z]+" name="textfield4" value="{{ val.place }}" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="post">Post</label>
+        <input type="text" class="form-control" id="post" pattern="[a-z A-Z]+" name="textfield5" value="{{ val.post }}" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="pin">PIN</label>
+        <input type="text" class="form-control" id="pin" pattern="[0-9]{6}" name="textfield6" value="{{ val.pin }}" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" id="phone"  name="textfield7" value="{{ val.phone }}" required pattern="[6789][0-9]{9}">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="textfield8" value="{{ val.email }}" required>
+      </div>
+
+      <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

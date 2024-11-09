@@ -1,0 +1,110 @@
+{##}
+{#{% extends 'Coordinator/cindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="621" border="1">#}
+{#    <tr>#}
+{#      <td width="38">TYPE</td>#}
+{#      <td width="46">NAME</td>#}
+{#      <td width="63">DETAILS</td>#}
+{#      <td width="40">DATE</td>#}
+{#      <td width="53">STOCK</td>#}
+{#      <td width="80">QUANTITY</td>#}
+{#      <td width="49">PLACE</td>#}
+{#      <td width="79">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td height="64">&nbsp;{{ i.type }}</td>#}
+{#      <td>&nbsp;{{ i.name }}</td>#}
+{#      <td>&nbsp;{{ i.date }}</td>#}
+{#      <td>&nbsp;{{ i.details }}</td>#}
+{#      <td>&nbsp;{{ i.stock }}</td>#}
+{#      <td>&nbsp;{{ i.quantity }}</td>#}
+{#      <td>&nbsp;{{ i.place }}</td>#}
+{#      <td><p><a href="/coordinator_edit_stock/{{ i.id }}">EDIT</a></p>#}
+{#      <p><a href="/coordinator_delete_stock/{{ i.id }}">DELETE</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="8"><div align="center"><a href="/coordinator_add_stock">ADD</a></div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'Coordinator/cindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Management</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Stock Management</h2>
+
+  <form id="form1" name="form1" method="post" action="">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Name</th>
+            <th scope="col">Details</th>
+            <th scope="col">Date</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Place</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{ i.type }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.details }}</td>
+            <td>{{ i.date }}</td>
+            <td>{{ i.stock }}</td>
+            <td>{{ i.quantity }}</td>
+            <td>{{ i.place }}</td>
+            <td>
+              <a href="/coordinator_edit_stock/{{ i.id }}" class="btn btn-sm btn-primary mb-1">Edit</a>
+              <a href="/coordinator_delete_stock/{{ i.id }}" class="btn btn-sm btn-danger mb-1">Delete</a>
+              <a href="/add_needs/{{ i.id }}" class="btn btn-sm btn-info mb-1">Add Needs</a>
+{#              <a href="/add_needs/{{ i.id }}" class="btn btn-sm btn-info mb-1">View Needs</a>#}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/coordinator_add_stock" class="btn btn-success">Add New Stock</a>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

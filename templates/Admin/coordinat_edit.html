@@ -1,0 +1,161 @@
+{#{% extends 'admin/adminindex.html' %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/admin_edit_coordinator_post" enctype="multipart/form-data">#}
+{#{% csrf_token %}#}
+{#  <table width="443" border="1">#}
+{#    <tr>#}
+{#      <td width="137">NAME</td>#}
+{#      <td width="290"><input type="text" name="textfield"  value="{{ cod.name }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>IMAGE</td>#}
+{#      <td><img src="{{ cod.image.url }}" alt="" height="50px" width="50px"/><input type="file" name="file" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>DATE OF BIRTH </td>#}
+{#      <td><input type="date" name="textfield3" value="{{ date }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>GENDER</td>#}
+{#      <td><input name="radiobutton" type="radio" value="male" {% if cod.gender == 'male' %} checked {% endif %}/>#}
+{#      MALE#}
+{#        <input name="radiobutton" type="radio" value="female" {% if cod.gender == 'female' %} checked {% endif %} />#}
+{#      FEMALE#}
+{#        <input name="radiobutton" type="radio" value="others" {% if cod.gender == 'other' %} checked {% endif %}/>#}
+{#      OTHERS</td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>ADDRESS</td>#}
+{#      <td><input type="text" name="textfield4" value="{{ cod.address }}"  /></td>#}
+{#    </tr>#}
+{##}
+{#   <tr>#}
+{#      <td>PHONE NUMBER </td>#}
+{#      <td><input type="text" name="textfield7" value="{{ cod.phone_number }}" /></td>#}
+{#    </tr>#}
+{##}
+{#      <tr>#}
+{#      <td>CAMP</td>#}
+{#      <td><select name="camp">#}
+{#          {% for i in camp %}#}
+{#          <option value="{{ i.id }}" {% if cod.CAMP.id == i.id %} selected {% endif %}>{{ i.name }}</option>#}
+{#          {% endfor %}#}
+{#      </select></td>#}
+{#    </tr>#}
+{##}
+{#    <tr>#}
+{#      <td>EMAIL</td>#}
+{#      <td><input type="text" name="textfield8" value="{{cod.email }}"  /></td>#}
+{#    </tr>#}
+{##}
+{#    <tr>#}
+{#      <td>&nbsp;</td>#}
+{#      <td><input type="submit" name="Submit" value="Submit" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Coordinator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5>Edit Coordinator Information</h5>
+        </div>
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="/admin_edit_coordinator_post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" name="textfield" value="{{ cod.name }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="image" class="form-label">Image</label>
+                        <div>
+                            <img src="{{ cod.image.url }}" alt="" height="50px" width="50px" class="mb-2"/>
+                            <input type="file" class="form-control" name="file">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="dob" class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" name="textfield3" value="{{ date }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Gender</label>
+                        <div>
+                            <input name="radiobutton" type="radio" value="male" {% if cod.gender == 'male' %} checked {% endif %}/> Male
+                            <input name="radiobutton" type="radio" value="female" {% if cod.gender == 'female' %} checked {% endif %}/> Female
+                            <input name="radiobutton" type="radio" value="others" {% if cod.gender == 'other' %} checked {% endif %}/> Others
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" name="textfield4" value="{{ cod.address }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" name="textfield7" value="{{ cod.phone_number }}">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="camp" class="form-label">Camp</label>
+                        <select name="camp" class="form-select">
+                            {% for i in camp %}
+                                <option value="{{ i.id }}" {% if cod.CAMP.id == i.id %} selected {% endif %}>{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="textfield8" value="{{ cod.email }}">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-12 text-end">
+                        <input type="submit" name="Submit" value="Submit" class="btn btn-success">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock %}
